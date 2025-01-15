@@ -1,4 +1,4 @@
-package es.paraninfo.tcpsocketserver;
+package server;
 
 import java.io.IOException;
 import java.io.InputStream;
