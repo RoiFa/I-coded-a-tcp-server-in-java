@@ -2,12 +2,14 @@ package client;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class SocketTCPClient {
     private String serverIP;
     private int serverPort;
+    private String name;
     private Socket socket;
     private InputStream is;
     private OutputStream os;
@@ -20,18 +22,29 @@ public class SocketTCPClient {
         return os;
     }
 
-    public SocketTCPClient (String serverIP, int serverPort) { 
+    public String getName() {
+        return name;
+    }
+
+    public SocketTCPClient (String serverIP, int serverPort, String name) { 
         this.serverIP = serverIP;
         this.serverPort = serverPort;
+        this.name = name;
     }
 
     public void start() throws UnknownHostException, IOException {
-        System.out.println("(Cliente) Estableciendo conexión..."); 
-        socket = new Socket (serverIP, serverPort);
-        os = socket.getOutputStream();
-        is = socket.getInputStream();
-        
-        System.out.println("(Cliente) Conexión establecida.");
+        System.out.println("(Cliente) Estableciendo conexión...");
+        try {
+            socket = new Socket (serverIP, serverPort);
+            os = socket.getOutputStream();
+            is = socket.getInputStream();
+            
+            System.out.println("(Cliente) Conexión establecida.");
+            PantallaComunicacion comunicacion = new PantallaComunicacion(this);
+            comunicacion.setVisible(true);
+        } catch (ConnectException e) {
+            System.out.println("(Cliente) Conexión rehusada");
+        }
     }
     
     public void stop() throws IOException {
