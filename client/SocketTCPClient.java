@@ -1,6 +1,8 @@
 package client;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ConnectException;
 import java.net.Socket;
@@ -32,7 +34,7 @@ public class SocketTCPClient {
         this.name = name;
     }
 
-    public void start() throws UnknownHostException, IOException {
+    public void connect() throws UnknownHostException, IOException {
         System.out.println("(Cliente) Estableciendo conexión...");
         try {
             socket = new Socket (serverIP, serverPort);
@@ -42,6 +44,11 @@ public class SocketTCPClient {
             System.out.println("(Cliente) Conexión establecida.");
             PantallaComunicacion comunicacion = new PantallaComunicacion(this);
             comunicacion.setVisible(true);
+            while (true) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(is));
+                System.out.println("Leyendo...");
+                System.out.println(br.readLine());
+            }
         } catch (ConnectException e) {
             System.out.println("(Cliente) Conexión rehusada");
         }

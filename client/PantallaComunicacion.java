@@ -6,7 +6,6 @@ import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.PrintWriter;
-import java.util.concurrent.Flow;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -59,7 +58,7 @@ public class PantallaComunicacion extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     String text = message.getText();
-                    pw.print(text);
+                    pw.print(text + "|@|" + client.getName() + "|@|" + String.valueOf(destinatarioList.getSelectedItem()));
                     history.setText(history.getText() + "## TO -> " + String.valueOf(destinatarioList.getSelectedItem()) + " ##\n" + text + "\n");
                     pw.flush();
                 }
@@ -75,6 +74,10 @@ public class PantallaComunicacion extends JFrame {
             this.add(chooseClient);
             this.add(sendMessage);
         }
+    }
+
+    public void receiveText(String text) {
+        System.out.println(text);
     }
 
 }
