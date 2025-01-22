@@ -64,7 +64,7 @@ public class PantallaPuerto extends JFrame {
                     SocketTCPClient cliente = new SocketTCPClient(ip.getText(), Integer.parseInt(port.getText()), name.getText());
                     try {
                         close();
-                        cliente.start();
+                        cliente.connect();
                     } catch (UnknownHostException ex) {
                         ex.printStackTrace();
                     } catch (IOException ex) {
