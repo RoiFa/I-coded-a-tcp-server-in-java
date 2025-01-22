@@ -1,19 +1,16 @@
-Servidor TCP con clientes.
+package server;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.io.IOException;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
+import javax.swing.border.EmptyBorder;
 
 public class LogScreen extends JFrame implements Runnable{
     JTextArea puerto;
@@ -73,87 +70,3 @@ public class LogScreen extends JFrame implements Runnable{
         conect(port);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Eye of RA
-     |
-   ( o )
-   ( _ )

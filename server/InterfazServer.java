@@ -65,11 +65,6 @@ class InterfazServer extends JFrame{
             public void mouseReleased(MouseEvent evt){
                 JButton btn = (JButton) evt.getSource();
                 try {
-                    SocketTCPServer servidor = new SocketTCPServer(Integer.parseInt(puerto.getText()));
-                    servidor.start();
-                    System.out.println("Mensaje del cliente:" + servidor.is.read());
-                    servidor.os.write(200);
-                    servidor.stop();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
