@@ -9,8 +9,8 @@ import java.net.Socket;
 public class SocketTCPServer {
     private ServerSocket serverSocket;
     private Socket socket;
-    private InputStream is;
-    private OutputStream os;
+    InputStream is;
+    OutputStream os;
 
     public SocketTCPServer (int puerto) throws IOException {
         serverSocket = new ServerSocket (puerto);
@@ -32,14 +32,7 @@ public class SocketTCPServer {
     }
 
     public static void main(String[] args) {
-        try {
-            SocketTCPServer servidor = new SocketTCPServer(49171);
-            servidor.start();
-            System.out.println("Mensaje del cliente:" + servidor.is.read());
-            servidor.os.write(200);
-            servidor.stop();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        InterfazServer serv = new InterfazServer();
+        serv.show(true);
     }
 }
